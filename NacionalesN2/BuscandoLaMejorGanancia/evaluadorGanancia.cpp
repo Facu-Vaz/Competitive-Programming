@@ -20,17 +20,22 @@ int ganancia( int P, vector< PQ > fabricantes, vector< PQ > compradores, int & F
 
 int main()
 {
+    ifstream ifs;
+    ifs.open("ejemplo.in");
+    ofstream ofs;
+    ofs.open("ejemplo.out");
+    
     int P, F, C;
-    cin >> P >> F >> C;
+    ifs >> P >> F >> C;
     vector<PQ> fab, comp;
     fab.resize(F);
     for (int i=0;i<F;i++)
-        cin >> fab[i].precio >> fab[i].cantidad;
+        ifs >> fab[i].precio >> fab[i].cantidad;
     comp.resize(C);
     for (int i=0;i<C;i++)
-        cin >> comp[i].precio >> comp[i].cantidad;
+        ifs >> comp[i].precio >> comp[i].cantidad;
     int Fab, Comp;
     int utilidad = ganancia(P, fab, comp, Fab, Comp);
-    cout << Fab << " " << Comp << " " << utilidad << endl;
+    ofs << Fab << " " << Comp << " " << utilidad << endl;
     return 0;
 }

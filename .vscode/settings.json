@@ -6,7 +6,9 @@
         "vector": "cpp",
         "iosfwd": "cpp",
         "sstream": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
