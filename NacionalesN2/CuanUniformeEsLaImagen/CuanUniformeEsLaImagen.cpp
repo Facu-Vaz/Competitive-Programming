@@ -11,13 +11,13 @@ int main()
     
     int N;
     string line;
-    cin >> N;
+    ifs >> N;
 
     vector<vector<int>> paint (N, vector<int> (N, -1));
     vector<vector<bool>> visited (N, vector<bool> (N, false));
 
     for (int i = 0; i < N; i++) {
-        cin >> line;
+        ifs >> line;
         for (int j = 0; j < N; j++)
         {
             paint[i][j] = (int) line[j] - 48;
