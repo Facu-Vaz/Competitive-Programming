@@ -15,7 +15,8 @@
 				"-Wall",
 				"-Wextra",
 				"-Wshadow",
-				"-Wconversion -D_GLIBCXX_DEBUG"
+				"-Wconversion",
+				"-D_GLIBCXX_DEBUG"
 			],
 			"options": {
 				"cwd": "${fileDirname}"

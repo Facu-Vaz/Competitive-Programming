@@ -14,7 +14,11 @@
         "deque": "cpp",
         "forward_list": "cpp",
         "list": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp",
+        "numbers": "cpp",
+        "algorithm": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
