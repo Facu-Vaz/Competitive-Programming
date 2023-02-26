@@ -6,9 +6,9 @@ int main ()
 {
     int H, W, start, end;
     cin >> H >> W;
-    int num_nodes = 1;
+    int num_nodes = 0;
     vector<vector<int>> adj;
-    vector<vector<bool>> not_wall (H, vector<bool> (W, false));
+    vector<vector<int>> id (H, vector<int> (W, -1));
     char temp;
     for (int h = 0; h < H; h++)
     {
@@ -16,8 +16,29 @@ int main ()
         {
             cin >> temp;
             if (temp != '#') {
-                icon 
+                id[h][w] = num_nodes; 
+                adj.push_back(vector<int>());
+                if (h > 0) {
+                    if (id[--h][w] != -1) {
+                        adj[num_nodes].push_back(id[--h][w]);
+                        adj[id[--h][w]].push_back(num_nodes);
+                    }
+                } 
+                if (w > 0) {
+                    if (id[h][w-1] != -1) {
+                        adj[num_nodes].push_back(id[h][--w]);
+                        adj[id[h][--w]].push_back(num_nodes);
+                    }
+                }
+                num_nodes++;
             }
+        }
+    }
+
+    for (int a = 0; a < num_nodes; a++) {
+        cout << a << " - ";
+        for (auto b : adj[a]) {
+            cout << b << " , ";
         }
     }
 }
