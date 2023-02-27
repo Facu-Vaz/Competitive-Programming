@@ -18,7 +18,8 @@
         "initializer_list": "cpp",
         "valarray": "cpp",
         "numbers": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "thread": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
