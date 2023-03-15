@@ -1,22 +1,36 @@
 #include <bits/stdc++.h>
+#define ll long long
 
 using namespace std;
-vector<long long> segTree;
-vector<long long> num_list;
-long long size_list, N, num_queries; 
+vector<ll> segTree;
+vector<ll> num_list;
+ll size_list, N, num_queries; 
 
-void update (int a, int b, int x) 
+void update (ll a, ll b, ll x) 
 {
-
+    a += N; b += N;
+    while (a <= b)
+    {
+        if (a % 2 == 1) segTree[a++] += x;
+        if (b % 2 == 0) segTree[b--] += x;
+        a /= 2; b /= 2;
+    }
 }
 
-int find (int a) 
+ll find (ll a) 
 {
-
+    a += N;
+    ll sum = 0;
+    while (a != 0) {
+        sum += segTree[a];
+        a /= 2;
+    }
+    return sum;
 }
 
 int main ()
 {
+    //ifstream cin("input.in");
     cin >> size_list >> num_queries;
     N = 1;
     while (N < size_list) {
@@ -27,8 +41,8 @@ int main ()
     for (int i = 0; i < size_list; i++) {
         cin >> num_list[i];
     }
-    int operation, a, b, x;
-    vector<int> ret;
+    long long operation, a, b, x;
+    vector<ll> ret;
     for (int q = 0; q < num_queries; q++)
     {
         cin >> operation;
