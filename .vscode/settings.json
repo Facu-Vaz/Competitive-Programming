@@ -20,7 +20,8 @@
         "numbers": "cpp",
         "algorithm": "cpp",
         "thread": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "*.tcc": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
