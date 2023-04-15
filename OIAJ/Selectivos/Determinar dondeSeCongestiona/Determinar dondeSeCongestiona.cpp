@@ -23,6 +23,7 @@ int recorrer (int node, int from, vector<vector<int>>& new_adj) {
         if (from != -1) {
             trafic[id[from][node]] += sum;
         }
+        return sum;
     }
 }
 
