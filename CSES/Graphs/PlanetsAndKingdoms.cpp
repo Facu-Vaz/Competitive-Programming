@@ -4,8 +4,8 @@ using namespace std;
 
 int num_nodes, num_conexions;
 
-vector<vector<int>> adj_1;
-vector<vector<int>> adj_2;
+vector<vector<int>> adj;
+vector<vector<int>> adj_reversed;
 
 int num_groups;
 
@@ -18,16 +18,16 @@ int grupo_actual;
 
 void dfs (int x) {
     visited[x] = true;
-    for (auto a : adj_1) {
-        if (!visited[x]) dfs(x);
+    for (auto a : adj[x]) {
+        if (!visited[a]) dfs(a);
     }
     process.push_back(x);
 }
 
-void dfs_2 (int x) {
+void dfs_reversed (int x) {
     group[x] = grupo_actual;
-    for (auto a : adj_2[x]) {
-        if (group[a] == 0) dfs_2(a);
+    for (auto a : adj_reversed[x]) {
+        if (group[a] == 0) dfs_reversed(a);
     }
 }
 
@@ -36,8 +36,8 @@ int main () {
     cin.tie(0);
 
     cin >> num_nodes >> num_conexions;
-    adj_1.resize(num_nodes+1);
-    adj_2.resize(num_nodes+1);
+    adj.resize(num_nodes+1);
+    adj_reversed.resize(num_nodes+1);
 
     visited.resize(num_nodes+1, false);
     group.resize(num_nodes+1, 0);
@@ -45,8 +45,8 @@ int main () {
     int a, b;
     for (int c = 0; c < num_conexions; c++) {
         cin >> a >> b;
-        adj_1[a].push_back(b);
-        adj_2[b].push_back(a);
+        adj[a].push_back(b);
+        adj_reversed[b].push_back(a);
     }
 
     num_groups = 0;
@@ -57,11 +57,12 @@ int main () {
 
 
     for (int i = num_nodes-1; i >= 0; i--) {
-        cout << process[i] << " ";
+        //cout << process[i] << " ";
         if (group[process[i]] == 0) {
+            //cout << i << endl;
             num_groups++;
             grupo_actual = num_groups;
-            dfs_2(process[i]);
+            dfs_reversed(process[i]);
         }
     }
 
@@ -70,5 +71,5 @@ int main () {
     cout << num_groups << endl;
     for (int i = 1; i <= num_nodes; i++) cout << group[i] << " ";
     
-    for (int i )
+    //for (int i )
 }
